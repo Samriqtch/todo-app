@@ -6,8 +6,7 @@ import { User } from './users/users.service';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { EventDemoService } from './services/event-demo.service';
 import { NotificationModule } from './notification/notification.module';
-import { Notification } from './notification/notification.entity';
-
+import { NotificationEntity } from './notification/notification.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -17,10 +16,10 @@ import { Notification } from './notification/notification.entity';
       username: 'postgres',
       password: '1234',
       database: 'adminbd',
-      entities: [User, Notification], //entités
+      entities: [User, NotificationEntity], //entités
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([User, Notification]),
+    TypeOrmModule.forFeature([User, NotificationEntity]),
     EventEmitterModule.forRoot(),
     NotificationModule,
   ],

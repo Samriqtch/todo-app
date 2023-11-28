@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
-export  default class Notification {
+export   class NotificationEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

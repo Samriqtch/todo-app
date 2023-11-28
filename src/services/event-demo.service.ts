@@ -10,8 +10,8 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class EventDemoService {
     constructor(
-        @InjectRepository(Notification)
-        private readonly notificationRepository: Repository<Notification>,
+        @InjectRepository(NotificationEntity)
+        private readonly notificationRepository: Repository<NotificationEntity>,
         
       ) {}
 /*  constructor(private eventEmitter: EventEmitter2) {}
@@ -23,11 +23,11 @@ export class EventDemoService {
 )}*/
 @OnEvent('user.created')
 notify(userName: string){
-    const notif = new Notification()
+    const notification = new NotificationEntity()
     const mess = `user ${userName} creer` 
-    notif.message=mess
+    notification.message=mess
     console.log('notifying subscribers..', userName)
-    return  this.notificationRepository.save(notif)
+    return  this.notificationRepository.save(notification)
 
 }
 } 
