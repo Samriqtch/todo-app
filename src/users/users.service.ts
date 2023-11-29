@@ -34,7 +34,9 @@ export class UserService {
     return this.userRepository.findOne({where:{id}});
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: number,): Promise<void> {
+    const userName = id
+    this.eventEmitter.emit('user.remove' ,userName)
     await this.userRepository.delete(id);
   }
 }

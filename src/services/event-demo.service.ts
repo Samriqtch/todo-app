@@ -38,4 +38,13 @@ notifyupdate(userName:string){
   return this.notificationRepository.save(notification)
 
 }
+@OnEvent('user.remove')
+notifyremove(userName:string){
+  const notification = new NotificationEntity()
+  const mess = `user ${userName} supprimer`
+  notification.message=mess
+  console.log('user removing ..',userName)
+  return this.notificationRepository.save(notification)
+
+}
 } 
