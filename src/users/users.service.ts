@@ -28,6 +28,8 @@ export class UserService {
   }
 
   async update(id: number, updatedUser: User): Promise<User> {
+    const userName = updatedUser.firstName
+    this.eventEmitter.emit('user.updated',userName)
     await this.userRepository.update(id, updatedUser);
     return this.userRepository.findOne({where:{id}});
   }

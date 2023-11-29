@@ -13,4 +13,5 @@ export default class User {
 
   @Column()
   lastName: string;
+  static firstName: any;
 }

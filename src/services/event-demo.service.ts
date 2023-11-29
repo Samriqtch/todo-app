@@ -28,6 +28,14 @@ notify(userName: string){
     notification.message=mess
     console.log('notifying subscribers..', userName)
     return  this.notificationRepository.save(notification)
+}
+@OnEvent('user.updated')
+notifyupdate(userName:string){
+  const notification = new NotificationEntity()
+  const mess = `user ${userName} mise à jour`
+  notification.message=mess
+  console.log('user updating..',userName)
+  return this.notificationRepository.save(notification)
 
 }
 } 
